@@ -6,7 +6,6 @@ function Main(){
     return(
         <div>
             <Searchbar />
-            MAIN
         </div>
     )
 }

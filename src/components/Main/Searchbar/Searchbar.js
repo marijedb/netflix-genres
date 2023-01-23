@@ -3,8 +3,8 @@ import "./Searchbar.css"
 
 function Searchbar(){
     return(
-        <div>
-            <input type="search" />
+        <div className="searchbar">
+            <input className="searchbar--input" type="search" placeholder="Search by Genre" />
         </div>
     )
 }

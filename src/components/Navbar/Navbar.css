@@ -3,22 +3,108 @@
     align-items: center;
     box-shadow: 1px 0 15px #fff;
     margin-bottom: 2em;
-    padding: .5em;
+    padding: .8em 1em .5em .5em;
 }
 
 .navbar--logo {
-    width: 100px;
+    width: 40px;
 }
 
 .navbar--title {
     margin: 0;
-    font-size: 2rem;
+    font-size: .8rem;
 }
 
 .navbar--subtitle {
     margin: 0;
-    font-size: .8rem;
+    font-size: .5rem;
     font-style: italic;
     text-align: end;
-    letter-spacing: 3px;
+    letter-spacing: 1px;
+}
+
+.navbar--toggle {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    align-self: flex-start;
+    gap: .4em;
+}
+
+.navbar--toggler {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #fff;
+    border-radius: 30px;
+    height: 10px;
+    width: 20px;
+}
+
+.navbar--toggler--switch {
+    background-color: #fff;
+    align-self: flex-end;
+    border-radius: 50%;
+    height: 10px;
+    width: 10px;
+}
+
+.navbar--nederlands, 
+.navbar--english {
+    margin: 0;
+    font-size: .5rem;
+}
+
+
+
+
+
+@media (min-width: 400px) {
+    .navbar--logo {
+        width: 60px;
+    }
+    
+    .navbar--title {
+        font-size: 1.4rem;
+    }
+    
+    .navbar--subtitle {
+        font-size: .6rem;
+        letter-spacing: 2px;
+    }
+    
+    .navbar--nederlands,
+    .navbar--english {
+        margin: 0;
+        font-size: .8rem;
+    }
+}
+
+
+@media (min-width: 600px) {
+    .navbar--logo {
+        width: 100px;
+    }
+    
+    .navbar--title {
+        font-size: 2rem;
+    }
+    
+    .navbar--subtitle {
+        font-size: .8rem;
+        letter-spacing: 3px;
+    }
+    
+    .navbar--toggle {
+        align-self: center;
+    }
+    
+    .navbar--toggler {
+        height: 20px;
+        width: 37px;
+    }
+    
+    .navbar--toggler--switch {
+        height: 20px;
+        width: 20px;
+    }
 }

@@ -1,0 +1,17 @@
+.searchbar {
+    text-align: center;
+    width: 100%;
+}
+
+.searchbar--input {
+    width: 90%;
+    padding: 1em;
+    border-radius: 5px;
+}
+
+
+@media (min-width: 800px) {
+    .searchbar--input {
+        max-width: 800px;
+    }
+}
