@@ -1,0 +1,24 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    box-shadow: 1px 0 15px #fff;
+    margin-bottom: 2em;
+    padding: .5em;
+}
+
+.navbar--logo {
+    width: 100px;
+}
+
+.navbar--title {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.navbar--subtitle {
+    margin: 0;
+    font-size: .8rem;
+    font-style: italic;
+    text-align: end;
+    letter-spacing: 3px;
+}
