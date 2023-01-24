@@ -12,8 +12,13 @@ function Navbar(props){
             </div>
             <div className="navbar--toggle">
                 <p className="navbar--nederlands">Nederlands</p>
-                <div className="navbar--toggler">
-                    <div className="navbar--toggler--switch"></div>
+                <div className="navbar--toggler" onClick={props.toggleLanguage}>
+
+                    {props.language === "Nederlands" ? 
+                    <div className="navbar--toggler--switch nederlands"></div> : 
+                    <div className="navbar--toggler--switch english"></div>
+                    }
+
                 </div>
                 <p className="navbar--english">English</p>
             </div>

@@ -3,7 +3,6 @@ import "./Genres.css"
 import { nanoid } from 'nanoid'
 
 function Genres(props){
-    // console.log("props.genres", props.genres)
 
     function getGenreHtml(){
         let genreHtml = ""
@@ -13,7 +12,9 @@ function Genres(props){
                 for(let i = 0; i < genre.length; i++){
                     if(genre.length > 1){
                         if(i !== 0){
-                            singleLetter.push(<p key={genre[i].code} className="genres--genre">{genre[i].genre}</p>)
+                            props.language === "Nederlands" ? 
+                            singleLetter.push(<p key={genre[i].code} className="genres--genre">{genre[i].genre}</p>) :
+                            singleLetter.push(<p key={genre[i].code} className="genres--genre">{genre[i].english}</p>)
                         } else {
                             singleLetter.push(<h4 key={genre[i]} className="genres--letter">{genre[i]}</h4>)
                         }
@@ -33,7 +34,8 @@ function Genres(props){
 
     return(
         <div className="genres">
-            {props.genres.length > 0 ? getGenreHtml() : <h4 className="genres--loading">Loading genres...</h4>}
+            {props.language === "Nederlands" ? props.genres.length > 0 ? getGenreHtml() : <h4 className="genres--loading">Genres aan het laden...</h4>:
+            props.genres.length > 0 ? getGenreHtml() : <h4 className="genres--loading">Loading Genres...</h4>}
         </div>
     )
 }

@@ -42,10 +42,17 @@
 
 .navbar--toggler--switch {
     background-color: #fff;
-    align-self: flex-end;
     border-radius: 50%;
     height: 10px;
     width: 10px;
+}
+
+.nederlands {
+    align-self: flex-start;
+}
+
+.english{
+    align-self: flex-end;
 }
 
 .navbar--nederlands, 

@@ -1,7 +1,7 @@
 .genres {
     display: grid;
     grid-template-columns: 1fr;
-    width: 90%;
+    max-width: 90%;
     margin: 1.5em auto 0;
     gap: 1em;
 }
