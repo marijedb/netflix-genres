@@ -1,0 +1,32 @@
+.genres {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 90%;
+    margin: 1.5em auto 0;
+    gap: 1em;
+}
+
+/* .genres--subcontainer {
+    margin-top: 1.5em;
+} */
+
+.genres--letter {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 .3em;
+}
+
+.genres--genre {
+    font-size: .8rem;
+    margin: .3em 0;
+}
+
+.genres--genre:last-child {
+    margin-bottom: 0;
+}
+
+@media (min-width: 400px){
+    .genres {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

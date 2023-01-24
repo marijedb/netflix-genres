@@ -4,6 +4,7 @@
 }
 
 .searchbar--input {
+    font-family: inherit;
     width: 90%;
     padding: 1em;
     border-radius: 5px;
