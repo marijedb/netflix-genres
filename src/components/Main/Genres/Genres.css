@@ -6,23 +6,30 @@
     gap: 1em;
 }
 
-/* .genres--subcontainer {
-    margin-top: 1.5em;
-} */
+.genres--subcontainer {
+    margin-bottom: 1em;
+}
 
 .genres--letter {
+    text-align: center;
     font-size: 1.5rem;
     font-weight: 700;
-    margin: 0 0 .3em;
+    margin: 0 0 .5em;
 }
 
 .genres--genre {
     font-size: .8rem;
-    margin: .3em 0;
+    margin: .4em 0; 
 }
 
 .genres--genre:last-child {
     margin-bottom: 0;
+}
+
+.genres--loading {
+    font-size: 1.5rem;
+    text-align: center;
+    grid-column: 1 / -1;
 }
 
 @media (min-width: 400px){
