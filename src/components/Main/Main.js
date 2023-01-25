@@ -9,38 +9,52 @@ function Main(props){
 
 
     function filterGenres(){
-        const filtered = []
-        if(props.language === "dutch"){
-            props.genres.forEach(genre => {
-                genre.forEach(oneGenre => {
-                    if(oneGenre.genre !== undefined){
-                        if(oneGenre.genre.dutch.toLowerCase().includes(searchInput)){
-                            filtered.push(oneGenre)
+        let filtered = []
+        const combined = []
+        props.genres.forEach(genre => {
+            if (genre.length > 1){
+                combined.push(genre)
+            }
+        })
+        if(props.language === "dutch"){ 
+            const dutchFiltered = combined.filter(genre => {
+                let temporaryArray = []
+                let tempFirstLetter = ""
+                for(let i = 0; i < genre.length; i++){
+                    if(genre[i].genre !== undefined){
+                        if(genre[i].genre.dutch.toLowerCase().includes(searchInput)){
+                            tempFirstLetter = genre[i].genre.dutch.slice(0,1)
+                            temporaryArray.push(genre[i])
                         }
                     }
-                })
+                }
+                temporaryArray.unshift(tempFirstLetter)
+                filtered.push(temporaryArray)
             })
         } else {
             props.genres.forEach(genre => {
                 genre.forEach(oneGenre => {
                     if(oneGenre.genre !== undefined){
                         if(oneGenre.genre.english.toLowerCase().includes(searchInput)){
-                            filtered.push(oneGenre)
+                            filtered.push([oneGenre])
                         }
                     }
                 })
             })
         }
+
+        for(let i = 0; i < filtered.length; i++){
+            
+        }
+        console.log("filtered: ", filtered)
         setFilteredGenres(filtered)
     }
 
     function changeCurrentInput(event){
-        console.log(event.target.value)
         if(event.target.value === ""){
             setFilteredGenres([])
             setSearchInput("")
         } else {
-            console.log(event.target.value)
             setSearchInput(event.target.value)
         }
     }
@@ -52,8 +66,6 @@ function Main(props){
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [searchInput])
 
-    console.log("length: ",filteredGenres.length)
-    console.log("search:", searchInput.length)
     return(
         <div className="main">
             <Searchbar language={props.language} changeCurrentInput={(e) => changeCurrentInput(e)} />
