@@ -47,7 +47,7 @@
     width: 10px;
 }
 
-.nederlands {
+.dutch {
     align-self: flex-start;
 }
 
@@ -55,7 +55,7 @@
     align-self: flex-end;
 }
 
-.navbar--nederlands, 
+.navbar--dutch, 
 .navbar--english {
     margin: 0;
     font-size: .5rem;
@@ -79,7 +79,7 @@
         letter-spacing: 2px;
     }
     
-    .navbar--nederlands,
+    .navbar--dutch,
     .navbar--english {
         margin: 0;
         font-size: .8rem;

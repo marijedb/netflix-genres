@@ -11,16 +11,16 @@ function Navbar(props){
                 <p className="navbar--subtitle">Browse Netflix by Genre</p>
             </div>
             <div className="navbar--toggle">
-                <p className="navbar--nederlands">Nederlands</p>
+                <p className="navbar--dutch">NL</p>
                 <div className="navbar--toggler" onClick={props.toggleLanguage}>
 
-                    {props.language === "Nederlands" ? 
-                    <div className="navbar--toggler--switch nederlands"></div> : 
+                    {props.language === "dutch" ? 
+                    <div className="navbar--toggler--switch dutch"></div> : 
                     <div className="navbar--toggler--switch english"></div>
                     }
 
                 </div>
-                <p className="navbar--english">English</p>
+                <p className="navbar--english">ENG</p>
             </div>
         </div>
     )
