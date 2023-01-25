@@ -25,8 +25,6 @@ function App() {
 
     makeSorterdArrayDutch(cleanData)
     makeSorterdArrayEnglish(cleanData)
-
-    console.log(sortedArrayDutch)
     
     setGenres(sortedArrayDutch)
   }
@@ -64,6 +62,7 @@ function App() {
 
   useEffect(()=> {
     fetchData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
   return (
