@@ -33,8 +33,7 @@
 }
 
 .genres--genre:hover,
-.genres--genre:focus,
-.genres--genre:active {
+.genres--genre:focus {
     color: #E50914;
     outline: none;
 }
