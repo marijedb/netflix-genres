@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/netflix-genres/static/css/main.0a93660e.css",
-    "main.js": "/netflix-genres/static/js/main.48a1fad0.js",
+    "main.css": "/netflix-genres/static/css/main.e0e9be28.css",
+    "main.js": "/netflix-genres/static/js/main.b70347fb.js",
     "static/js/787.f2232382.chunk.js": "/netflix-genres/static/js/787.f2232382.chunk.js",
     "index.html": "/netflix-genres/index.html",
-    "main.0a93660e.css.map": "/netflix-genres/static/css/main.0a93660e.css.map",
-    "main.48a1fad0.js.map": "/netflix-genres/static/js/main.48a1fad0.js.map",
+    "main.e0e9be28.css.map": "/netflix-genres/static/css/main.e0e9be28.css.map",
+    "main.b70347fb.js.map": "/netflix-genres/static/js/main.b70347fb.js.map",
     "787.f2232382.chunk.js.map": "/netflix-genres/static/js/787.f2232382.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0a93660e.css",
-    "static/js/main.48a1fad0.js"
+    "static/css/main.e0e9be28.css",
+    "static/js/main.b70347fb.js"
   ]
 }
