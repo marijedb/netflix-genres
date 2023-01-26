@@ -4,8 +4,6 @@ import { nanoid } from 'nanoid'
 
 function Genres(props){
 
-    // console.log("genres: ",props.genres)
-
     function getGenreHtml(){
         let genreHtml = ""
         if(props.genres.length > 0){

@@ -17,29 +17,34 @@ function Main(props){
             }
         })
         if(props.language === "dutch"){ 
-            const dutchFiltered = combined.filter(genre => {
+            combined.forEach(genre => {
                 let temporaryArray = []
-                let tempFirstLetter = ""
+                let firstLetter = ""
                 for(let i = 0; i < genre.length; i++){
                     if(genre[i].genre !== undefined){
-                        if(genre[i].genre.dutch.toLowerCase().includes(searchInput)){
-                            tempFirstLetter = genre[i].genre.dutch.slice(0,1)
+                        if(genre[i].genre.dutch.toLowerCase().includes(searchInput.toLowerCase())){
+                            firstLetter = genre[i].genre.dutch.slice(0,1)
                             temporaryArray.push(genre[i])
                         }
                     }
                 }
-                temporaryArray.unshift(tempFirstLetter)
+                temporaryArray.unshift(firstLetter)
                 filtered.push(temporaryArray)
             })
         } else {
-            props.genres.forEach(genre => {
-                genre.forEach(oneGenre => {
-                    if(oneGenre.genre !== undefined){
-                        if(oneGenre.genre.english.toLowerCase().includes(searchInput)){
-                            filtered.push([oneGenre])
+            combined.forEach(genre => {
+                let temporaryArray = []
+                let firstLetter = ""
+                for(let i = 0; i < genre.length; i++){
+                    if(genre[i].genre !== undefined){
+                        if(genre[i].genre.english.toLowerCase().includes(searchInput.toLowerCase())){
+                            firstLetter = genre[i].genre.english.slice(0,1)
+                            temporaryArray.push(genre[i])
                         }
                     }
-                })
+                }
+                temporaryArray.unshift(firstLetter)
+                filtered.push(temporaryArray)
             })
         }
 
