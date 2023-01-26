@@ -14,11 +14,11 @@ function Genres(props){
                         if(i !== 0){
                             props.language === "dutch" ? 
                             singleLetter.push(<div key={nanoid()} className="genres--genre-container">
-                                    <p key={genre[i].code} className="genres--genre">{genre[i].genre.dutch}</p>
+                                    <a href={genre[i].link} key={genre[i].code} className="genres--genre" target="_blank" rel="noreferrer">{genre[i].genre.dutch}</a>
                                     <p className="genre--genre--code">{genre[i].code}</p>
                                 </div>) :
                             singleLetter.push(<div key={nanoid()} className="genres--genre-container">
-                                <p key={genre[i].code} className="genres--genre">{genre[i].genre.english}</p>
+                                <a href={genre[i].link} key={genre[i].code} className="genres--genre" target="_blank" rel="noreferrer">{genre[i].genre.english}</a>
                                 <p className="genre--genre--code">{genre[i].code}</p>
                                 </div>)
                         } else {

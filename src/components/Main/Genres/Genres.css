@@ -28,6 +28,15 @@
 .genres--genre {
     font-size: .8rem;
     margin: .7em 0; 
+    text-decoration: none;
+    color: #fff;
+}
+
+.genres--genre:hover,
+.genres--genre:focus,
+.genres--genre:active {
+    color: #E50914;
+    outline: none;
 }
 
 .genres--genre:last-child {
