@@ -16,7 +16,7 @@ function App() {
 
   
   const [genres, setGenres] = useState([])
-  const [language,setLanguage] = useState("dutch")
+  const [language,setLanguage] = useState("english")
   
   async function fetchData(){
     const response = await fetch('https://marijedb.github.io/my-apis/netflix/netflix.json')
