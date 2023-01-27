@@ -51,7 +51,6 @@ function Main(props){
         for(let i = 0; i < filtered.length; i++){
             
         }
-        console.log("filtered: ", filtered)
         setFilteredGenres(filtered)
     }
 
