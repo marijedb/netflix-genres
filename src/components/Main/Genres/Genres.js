@@ -9,16 +9,41 @@ function Genres(props){
         if(props.genres.length > 0){
             genreHtml = props.genres.map(genre => {
                 let singleLetter = []
+
                 for(let i = 0; i < genre.length; i++){
                     if(genre.length > 1){
                         if(i !== 0){
                             props.language === "dutch" ? 
                             singleLetter.push(<div key={nanoid()} className="genres--genre-container">
-                                    <a href={genre[i].link} key={genre[i].code} className="genres--genre" target="_blank" rel="noreferrer">{genre[i].genre.dutch}</a>
+                                    <img id={genre[i].id} 
+                                        src={genre[i].isFavorite ? props.favoriteIcon : props.starIcon} 
+                                        className="genres--genre--favorite" 
+                                        onClick={props.toggleFavorite} 
+                                        alt="star Icon" 
+                                    />
+                                    <a href={genre[i].link} 
+                                        key={genre[i].code} 
+                                        className="genres--genre" 
+                                        target="_blank" 
+                                        rel="noreferrer">{genre[i].genre.dutch}
+                                    </a>
                                     <p className="genre--genre--code">{genre[i].code}</p>
                                 </div>) :
                             singleLetter.push(<div key={nanoid()} className="genres--genre-container">
-                                <a href={genre[i].link} key={genre[i].code} className="genres--genre" target="_blank" rel="noreferrer">{genre[i].genre.english}</a>
+                                <img 
+                                    id={genre[i].id} 
+                                    src={genre[i].isFavorite ? props.favoriteIcon : props.starIcon} 
+                                    className="genres--genre--favorite" 
+                                    onClick={props.toggleFavorite} 
+                                    alt="star Icon" 
+                                />
+                                <a 
+                                    href={genre[i].link} 
+                                    key={genre[i].code} 
+                                    className="genres--genre" 
+                                    target="_blank" 
+                                    rel="noreferrer">{genre[i].genre.english}
+                                </a>
                                 <p className="genre--genre--code">{genre[i].code}</p>
                                 </div>)
                         } else {

@@ -20,9 +20,12 @@
 
 .genres--genre-container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: 1em;
+    gap: .5em;
+}
+
+.genres--genre--favorite {
+    width: 20px;
 }
 
 .genres--genre {
@@ -45,6 +48,7 @@
 .genre--genre--code {
     font-size: .8rem;
     margin: 0;
+    margin-left: auto;
 }
 
 .genres--loading {

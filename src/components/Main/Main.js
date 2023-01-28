@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Searchbar from "./Searchbar/Searchbar"
+import star from "../../images/star.png"
+import starYellow from "../../images/star-yellow.png"
 import "./Main.css"
 import Genres from "./Genres/Genres";
 
@@ -73,7 +75,13 @@ function Main(props){
     return(
         <div className="main">
             <Searchbar language={props.language} changeCurrentInput={(e) => changeCurrentInput(e)} />
-            <Genres genres={filteredGenres.length > 0 && searchInput.length > 0 ? filteredGenres : props.genres} language={props.language} />
+            <Genres 
+                genres={filteredGenres.length > 0 && searchInput.length > 0 ? filteredGenres : props.genres} 
+                language={props.language} 
+                starIcon={star}
+                favoriteIcon={starYellow}
+                toggleFavorite={props.toggleFavorite}
+            />
         </div>
     )
 }

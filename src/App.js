@@ -8,14 +8,14 @@ import { useEffect, useState } from 'react';
 const alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
 const sortedArrayDutch = [["A"],["B"],["C"],["D"],["E"],["F"],["G"],["H"],["I"],
 ["J"],["K"],["L"],["M"],["N"],["O"],["P"],["Q"],["R"],["S"],["T"],["U"],["V"],["W"],["X"],["Y"],["Z"]]
-const sorterdArrayEnglish = [["A"],["B"],["C"],["D"],["E"],["F"],["G"],["H"],["I"],
+const sortedArrayEnglish = [["A"],["B"],["C"],["D"],["E"],["F"],["G"],["H"],["I"],
 ["J"],["K"],["L"],["M"],["N"],["O"],["P"],["Q"],["R"],["S"],["T"],["U"],["V"],["W"],["X"],["Y"],["Z"]]
 
 
 function App() {
 
   
-  const [genres, setGenres] = useState([])
+  const [genres, setGenres] = useState(() => JSON.parse(localStorage.getItem("genres")) || [])
   const [language,setLanguage] = useState("english")
   
   async function fetchData(){
@@ -23,13 +23,13 @@ function App() {
     const data = await response.json()
     const cleanData = data[0].codes
 
-    makeSorterdArrayDutch(cleanData)
-    makeSorterdArrayEnglish(cleanData)
+    makeSortedArrayDutch(cleanData)
+    makeSortedArrayEnglish(cleanData)
     
-    setGenres(sortedArrayDutch)
+    setGenres(sortedArrayEnglish)
   }
   
-  function makeSorterdArrayDutch(cleanData){
+  function makeSortedArrayDutch(cleanData){
     for(let i = 0; i < alphabet.length; i++) {
         for(let j = 0; j < cleanData.length; j++){
             if(alphabet[i] === cleanData[j].genre.dutch.slice(0,1)){
@@ -38,11 +38,11 @@ function App() {
         }
       }
   }
-  function makeSorterdArrayEnglish(cleanData){
+  function makeSortedArrayEnglish(cleanData){
     for(let i = 0; i < alphabet.length; i++) {
         for(let j = 0; j < cleanData.length; j++){
             if(alphabet[i] === cleanData[j].genre.english.slice(0,1)){
-              sorterdArrayEnglish[i].push(cleanData[j])
+              sortedArrayEnglish[i].push(cleanData[j])
             }
         }
       }
@@ -51,7 +51,7 @@ function App() {
   function toggleLanguage(){
     setLanguage(prevLanguage => {
       if(prevLanguage === "dutch"){
-        setGenres(sorterdArrayEnglish)
+        setGenres(sortedArrayEnglish)
         return "english"
       } else {
         setGenres(sortedArrayDutch)
@@ -60,15 +60,35 @@ function App() {
     })
   }
 
+  function toggleFavorite(event){
+    setGenres(prevGenres => prevGenres.map(genre => {
+      let newGenres = []
+      for(let i = 0; i < genre.length; i++){
+          if(genre[i].id === event.target.id){
+            newGenres.push({...genre[i], isFavorite: !genre[i].isFavorite})
+          } else {
+            newGenres.push(genre[i])
+          }
+    }
+    return newGenres
+    }));
+  }
+
+  useEffect(() => {
+    localStorage.setItem('genres', JSON.stringify(genres))
+  }, [genres])
+
   useEffect(()=> {
-    fetchData()
+    if(genres.length === 0){
+      fetchData()
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
   return (
     <div>
       <Navbar logo={logo} language={language} toggleLanguage={() => toggleLanguage()} />
-      <Main genres={genres} language={language} />
+      <Main genres={genres} language={language} toggleFavorite={(e => toggleFavorite(e))} />
     </div>
   );
 }
