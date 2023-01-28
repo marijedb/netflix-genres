@@ -24,6 +24,10 @@
     gap: .5em;
 }
 
+.hide {
+    display: none;
+}
+
 .genres--genre--favorite {
     width: 20px;
 }

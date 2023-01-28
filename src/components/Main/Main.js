@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Searchbar from "./Searchbar/Searchbar"
+import Favorites from "./Favorites/Favorites";
 import star from "../../images/star.png"
 import starYellow from "../../images/star-yellow.png"
 import "./Main.css"
@@ -74,7 +75,16 @@ function Main(props){
 
     return(
         <div className="main">
-            <Searchbar language={props.language} changeCurrentInput={(e) => changeCurrentInput(e)} />
+            <Searchbar 
+                language={props.language} 
+                changeCurrentInput={(e) => changeCurrentInput(e)} 
+            />
+            <Favorites 
+                genres={filteredGenres.length > 0 && searchInput.length > 0 ? filteredGenres : props.genres}
+                favoriteIcon={starYellow}
+                toggleFavorite={props.toggleFavorite}
+                language={props.language}
+            />
             <Genres 
                 genres={filteredGenres.length > 0 && searchInput.length > 0 ? filteredGenres : props.genres} 
                 language={props.language} 

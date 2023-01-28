@@ -6,9 +6,9 @@ import logo from './images/logo.png'
 import { useEffect, useState } from 'react';
 
 const alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
-const sortedArrayDutch = [["A"],["B"],["C"],["D"],["E"],["F"],["G"],["H"],["I"],
+let sortedArrayDutch = [["A"],["B"],["C"],["D"],["E"],["F"],["G"],["H"],["I"],
 ["J"],["K"],["L"],["M"],["N"],["O"],["P"],["Q"],["R"],["S"],["T"],["U"],["V"],["W"],["X"],["Y"],["Z"]]
-const sortedArrayEnglish = [["A"],["B"],["C"],["D"],["E"],["F"],["G"],["H"],["I"],
+let sortedArrayEnglish = [["A"],["B"],["C"],["D"],["E"],["F"],["G"],["H"],["I"],
 ["J"],["K"],["L"],["M"],["N"],["O"],["P"],["Q"],["R"],["S"],["T"],["U"],["V"],["W"],["X"],["Y"],["Z"]]
 
 
@@ -61,7 +61,7 @@ function App() {
   }
 
   function toggleFavorite(event){
-    setGenres(prevGenres => prevGenres.map(genre => {
+    sortedArrayDutch = sortedArrayDutch.map(genre => {
       let newGenres = []
       for(let i = 0; i < genre.length; i++){
           if(genre[i].id === event.target.id){
@@ -71,7 +71,37 @@ function App() {
           }
     }
     return newGenres
-    }));
+    })
+
+    sortedArrayEnglish = sortedArrayEnglish.map(genre => {
+      let newGenres = []
+      for(let i = 0; i < genre.length; i++){
+          if(genre[i].id === event.target.id){
+            newGenres.push({...genre[i], isFavorite: !genre[i].isFavorite})
+          } else {
+            newGenres.push(genre[i])
+          }
+    }
+    return newGenres
+    })
+
+    if(language === "dutch"){
+      setGenres(sortedArrayDutch)
+    } else {
+      setGenres(sortedArrayEnglish)
+    }
+
+    // setGenres(prevGenres => prevGenres.map(genre => {
+    //   let newGenres = []
+    //   for(let i = 0; i < genre.length; i++){
+    //       if(genre[i].id === event.target.id){
+    //         newGenres.push({...genre[i], isFavorite: !genre[i].isFavorite})
+    //       } else {
+    //         newGenres.push(genre[i])
+    //       }
+    // }
+    // return newGenres
+    // }));
   }
 
   useEffect(() => {

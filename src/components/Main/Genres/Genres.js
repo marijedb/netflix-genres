@@ -14,10 +14,13 @@ function Genres(props){
                     if(genre.length > 1){
                         if(i !== 0){
                             props.language === "dutch" ? 
-                            singleLetter.push(<div key={nanoid()} className="genres--genre-container">
+                            singleLetter.push(<div 
+                                    key={nanoid()} 
+                                    className={`genres--genre-container ${genre[i].isFavorite ? "hide" : ""}`}
+                                    >
                                     <img id={genre[i].id} 
                                         src={genre[i].isFavorite ? props.favoriteIcon : props.starIcon} 
-                                        className="genres--genre--favorite" 
+                                        className="genres--genre--favorite"
                                         onClick={props.toggleFavorite} 
                                         alt="star Icon" 
                                     />
@@ -29,7 +32,9 @@ function Genres(props){
                                     </a>
                                     <p className="genre--genre--code">{genre[i].code}</p>
                                 </div>) :
-                            singleLetter.push(<div key={nanoid()} className="genres--genre-container">
+                            singleLetter.push(<div 
+                                key={nanoid()} 
+                                className={`genres--genre-container ${genre[i].isFavorite ? "hide" : ""}`}>
                                 <img 
                                     id={genre[i].id} 
                                     src={genre[i].isFavorite ? props.favoriteIcon : props.starIcon} 
