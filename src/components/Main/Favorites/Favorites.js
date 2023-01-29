@@ -3,8 +3,6 @@ import { nanoid } from 'nanoid'
 
 function Favorites(props){
 
-    // console.log("genres" ,props.genres)
-
     let favoriteHtml = []
     props.genres.forEach(genre => {
         for(let i = 0; i < genre.length; i++){
@@ -32,7 +30,7 @@ function Favorites(props){
 
     return(
         <div className="favorites">
-            <p className="favorites--title">FAVORITES</p>
+            <p className="favorites--title">{props.language === "dutch" ? "FAVORIETEN" : "FAVORITES"}</p>
             {favoriteHtml.length === 0 ? 
                 props.language === "dutch" ? 
                     <p className="favorites--addFavorites">Nog geen favorieten toegevoegd. Klik snel op wat sterren in de lijst van genres! :)</p> : 
