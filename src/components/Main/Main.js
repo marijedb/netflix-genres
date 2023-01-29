@@ -3,8 +3,10 @@ import Searchbar from "./Searchbar/Searchbar"
 import Favorites from "./Favorites/Favorites";
 import star from "../../images/star.png"
 import starYellow from "../../images/star-yellow.png"
+import alarm from "../../images/alarm.png"
 import "./Main.css"
 import Genres from "./Genres/Genres";
+import Reset from "./Reset/Reset";
 
 function Main(props){
     const [filteredGenres, setFilteredGenres] = useState([])
@@ -79,6 +81,11 @@ function Main(props){
             <Searchbar 
                 language={props.language} 
                 changeCurrentInput={(e) => changeCurrentInput(e)} 
+            />
+            <Reset 
+                language={props.language}
+                resetPage={props.resetPage}
+                alarmIcon={alarm}
             />
             <Favorites 
                 genres={filteredGenres.length > 0 && searchInput.length > 0 ? filteredGenres : props.genres}

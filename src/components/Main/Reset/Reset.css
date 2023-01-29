@@ -1,0 +1,58 @@
+.reset {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1em;
+    margin-right: 1em;
+}
+
+.reset--info {
+    font-style: italic;
+    font-size: .6rem;
+}
+
+.reset--btn {
+    padding: .8em 1.6em;
+    border: none;
+    font-family: inherit;
+    background-color: #E50914;
+    color: #fff;
+    text-shadow: 0 0 1px #000;
+    font-weight: bold;
+    font-size: .6rem;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    margin-left: 1em;
+    cursor: pointer;
+}
+
+.reset--btn:hover,
+.reset--btn:focus {
+    background-color: #e50914c1;
+}
+
+.reset--btn--text {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: .4em;
+}
+
+.reset--img {
+    width: 15px;
+}
+
+
+@media (min-width: 700px){
+    .reset--info {
+        font-size: .9rem;
+    }
+
+    .reset--btn {
+        font-size: .8rem;
+    }
+
+    .reset--img {
+        width: 20px;
+    }
+}

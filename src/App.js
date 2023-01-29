@@ -122,10 +122,26 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
+  function resetPage(){
+    if(window.confirm("This will remove all your favorites! Are you sure you wish to continue?")){
+      localStorage.clear()
+      window.location.reload()
+    }
+  }
+
   return (
     <div>
-      <Navbar logo={logo} language={language} toggleLanguage={() => toggleLanguage()} />
-      <Main genres={endedLanguage === "dutch" ? genresDutch : genresEnglish} language={language} toggleFavorite={(e => toggleFavorite(e))} />
+      <Navbar 
+        logo={logo} 
+        language={language} 
+        toggleLanguage={() => toggleLanguage()} 
+        />
+      <Main 
+        genres={endedLanguage === "dutch" ? genresDutch : genresEnglish} 
+        language={language} 
+        toggleFavorite={(e => toggleFavorite(e))} 
+        resetPage={() => resetPage()}
+      />
     </div>
   );
 }
