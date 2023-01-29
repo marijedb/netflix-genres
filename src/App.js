@@ -15,8 +15,10 @@ let sortedArrayEnglish = [["A"],["B"],["C"],["D"],["E"],["F"],["G"],["H"],["I"],
 function App() {
 
   
-  const [genres, setGenres] = useState(() => JSON.parse(localStorage.getItem("genres")) || [])
-  const [language,setLanguage] = useState("english")
+  const [genresDutch, setGenresDutch] = useState(() => JSON.parse(localStorage.getItem("genresDutch")) || [])
+  const [genresEnglish, setGenresEnglish] = useState(() => JSON.parse(localStorage.getItem('genresEnglish')) || [])
+  const [endedLanguage, setEndedLanguage] = useState(() => JSON.parse(localStorage.getItem("endedLanguage")) || "english")
+  const [language,setLanguage] = useState(endedLanguage)
   
   async function fetchData(){
     const response = await fetch('https://marijedb.github.io/my-apis/netflix/netflix.json')
@@ -26,7 +28,8 @@ function App() {
     makeSortedArrayDutch(cleanData)
     makeSortedArrayEnglish(cleanData)
     
-    setGenres(sortedArrayEnglish)
+    setGenresEnglish(sortedArrayEnglish)
+    setGenresDutch(sortedArrayDutch)
   }
   
   function makeSortedArrayDutch(cleanData){
@@ -51,10 +54,10 @@ function App() {
   function toggleLanguage(){
     setLanguage(prevLanguage => {
       if(prevLanguage === "dutch"){
-        setGenres(sortedArrayEnglish)
+        setEndedLanguage("english")
         return "english"
       } else {
-        setGenres(sortedArrayDutch)
+        setEndedLanguage("dutch")
         return "dutch"
       }
     })
@@ -64,53 +67,57 @@ function App() {
     sortedArrayDutch = sortedArrayDutch.map(genre => {
       let newGenres = []
       for(let i = 0; i < genre.length; i++){
-          if(genre[i].id === event.target.id){
-            newGenres.push({...genre[i], isFavorite: !genre[i].isFavorite})
-          } else {
-            newGenres.push(genre[i])
-          }
-    }
-    return newGenres
+           if(genre[i].id === event.target.id){
+          newGenres.push({...genre[i], isFavorite: !genre[i].isFavorite})
+        } else {
+          newGenres.push(genre[i])
+        }
+      }
+      return newGenres
     })
-
+    
     sortedArrayEnglish = sortedArrayEnglish.map(genre => {
       let newGenres = []
       for(let i = 0; i < genre.length; i++){
-          if(genre[i].id === event.target.id){
-            newGenres.push({...genre[i], isFavorite: !genre[i].isFavorite})
-          } else {
-            newGenres.push(genre[i])
-          }
-    }
-    return newGenres
+        if(genre[i].id === event.target.id){
+          newGenres.push({...genre[i], isFavorite: !genre[i].isFavorite})
+        } else {
+          newGenres.push(genre[i])
+        }
+      }
+      return newGenres
     })
 
-    if(language === "dutch"){
-      setGenres(sortedArrayDutch)
-    } else {
-      setGenres(sortedArrayEnglish)
-    }
-
-    // setGenres(prevGenres => prevGenres.map(genre => {
-    //   let newGenres = []
-    //   for(let i = 0; i < genre.length; i++){
-    //       if(genre[i].id === event.target.id){
-    //         newGenres.push({...genre[i], isFavorite: !genre[i].isFavorite})
-    //       } else {
-    //         newGenres.push(genre[i])
-    //       }
-    // }
-    // return newGenres
-    // }));
+    setGenresDutch(sortedArrayDutch)
+    setGenresEnglish(sortedArrayEnglish)
   }
 
   useEffect(() => {
-    localStorage.setItem('genres', JSON.stringify(genres))
-  }, [genres])
+    localStorage.setItem('genresDutch', JSON.stringify(genresDutch))
+  }, [genresDutch])
+
+  useEffect(() => {
+    localStorage.setItem('genresEnglish', JSON.stringify(genresEnglish))
+  }, [genresEnglish])
+
+  useEffect(() => {
+    localStorage.setItem('endedLanguage', JSON.stringify(endedLanguage))
+  }, [endedLanguage])
+
 
   useEffect(()=> {
-    if(genres.length === 0){
-      fetchData()
+    if(genresDutch.length !== 0) {
+      sortedArrayDutch = genresDutch
+      sortedArrayEnglish = genresEnglish
+    }
+    if(endedLanguage === "english"){
+      if(genresEnglish.length === 0){
+        fetchData()
+      } 
+    } else {
+      if(genresDutch.length === 0){
+        fetchData()
+      } 
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
@@ -118,7 +125,7 @@ function App() {
   return (
     <div>
       <Navbar logo={logo} language={language} toggleLanguage={() => toggleLanguage()} />
-      <Main genres={genres} language={language} toggleFavorite={(e => toggleFavorite(e))} />
+      <Main genres={endedLanguage === "dutch" ? genresDutch : genresEnglish} language={language} toggleFavorite={(e => toggleFavorite(e))} />
     </div>
   );
 }

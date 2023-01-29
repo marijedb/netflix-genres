@@ -3,6 +3,8 @@ import { nanoid } from 'nanoid'
 
 function Favorites(props){
 
+    // console.log("genres" ,props.genres)
+
     let favoriteHtml = []
     props.genres.forEach(genre => {
         for(let i = 0; i < genre.length; i++){
