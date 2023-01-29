@@ -16,7 +16,11 @@ function Reset(props){
                             Reset Pagina 
                             <img src={props.alarmIcon} alt="alarm icon" className="reset--img" />
                         </p> :
-                        "Reset Page"
+                        <p className="reset--btn--text">
+                            <img src={props.alarmIcon} alt="alarm icon" className="reset--img" />
+                            Reset Page 
+                        <img src={props.alarmIcon} alt="alarm icon" className="reset--img" />
+                    </p>
                     }
             </button>
         </div>
