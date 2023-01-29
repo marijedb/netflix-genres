@@ -123,9 +123,16 @@ function App() {
   },[])
 
   function resetPage(){
-    if(window.confirm("This will remove all your favorites! Are you sure you wish to continue?")){
-      localStorage.clear()
-      window.location.reload()
+    if(language === "english") {
+      if(window.confirm("This will remove all your favorites! Are you sure you wish to continue?")){
+        localStorage.clear()
+        window.location.reload()
+      }
+    } else {
+      if(window.confirm("Dit verwijderd al je favorieten! Weet je zeker dat je door wilt gaan?")){
+        localStorage.clear()
+        window.location.reload()
+      }
     }
   }
 
